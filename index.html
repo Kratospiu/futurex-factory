@@ -8,22 +8,36 @@
 <style>
 
 body{
-background:#0d1117;
-color:white;
-font-family:Arial;
-text-align:center;
-margin-top:40px;
+    background:#0d1117;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    margin-top:20px;
 }
 
-.robot{
-font-size:100px;
+h1{
+    font-size:40px;
+}
+
+.robot-img{
+    width:280px;
+    max-width:90%;
+    border-radius:20px;
+    box-shadow:0 0 20px #00aaff;
 }
 
 button{
-padding:15px;
-font-size:18px;
-border:none;
-border-radius:10px;
+    padding:15px 25px;
+    font-size:20px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+.info{
+    font-size:22px;
+    margin:10px;
 }
 
 </style>
@@ -34,17 +48,71 @@ border-radius:10px;
 
 <h1>🚀 FutureX Factory</h1>
 
-<div class="robot">
-🤖
-</div>
+<img id="robotImage" class="robot-img" src="robot-comun.jpg">
 
-<h2>Robot Básico</h2>
+<h2 id="robotName">Robot Común</h2>
 
-<p>Producción: 1 FutureX / día</p>
+<p class="info">
+Nivel: <span id="nivel">1</span>
+</p>
 
-<button>
+<p class="info">
+Producción: <span id="produccion">1</span> FutureX / día
+</p>
+
+<button onclick="mejorarRobot()">
 ⚙️ Mejorar Robot
 </button>
+
+<script>
+
+let nivel = 1;
+
+function actualizarRobot(){
+
+    let imagen = document.getElementById("robotImage");
+    let nombre = document.getElementById("robotName");
+    let produccion = document.getElementById("produccion");
+
+    if(nivel >= 50){
+        imagen.src = "robot-mitico.jpg";
+        nombre.innerText = "Robot Mítico";
+        produccion.innerText = 100;
+    }
+
+    else if(nivel >= 30){
+        imagen.src = "robot-legendario.jpg";
+        nombre.innerText = "Robot Legendario";
+        produccion.innerText = 50;
+    }
+
+    else if(nivel >= 20){
+        imagen.src = "robot-epico.jpg";
+        nombre.innerText = "Robot Épico";
+        produccion.innerText = 20;
+    }
+
+    else if(nivel >= 10){
+        imagen.src = "robot-raro.jpg";
+        nombre.innerText = "Robot Raro";
+        produccion.innerText = 5;
+    }
+
+    else{
+        imagen.src = "robot-comun.jpg";
+        nombre.innerText = "Robot Común";
+        produccion.innerText = 1;
+    }
+
+    document.getElementById("nivel").innerText = nivel;
+}
+
+function mejorarRobot(){
+    nivel++;
+    actualizarRobot();
+}
+
+</script>
 
 </body>
 </html>
